@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>С Днём Рождения, Дарья! 🎉</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1, #fbc2eb, #ff9a9e);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    font-family: 'Segoe UI', 'Georgia', serif;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Плавающие сердечки и звёздочки */
+  .floating {
+    position: fixed;
+    top: -10vh;
+    font-size: 1.8rem;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(115vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .card {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 28px;
+    padding: 50px 40px;
+    box-shadow:
+      0 25px 60px rgba(160, 80, 140, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+    text-align: center;
+    animation: cardIn 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28) both;
+  }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: scale(0.7) translateY(40px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .cake {
+    font-size: 4.5rem;
+    display: inline-block;
+    animation: bounce 1.6s ease-in-out infinite;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 8px 14px rgba(200, 100, 160, 0.4));
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-14px) rotate(3deg); }
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 6vw, 2.4rem);
+    color: #b0297e;
+    margin: 12px 0 4px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(255, 150, 200, 0.5);
+  }
+
+  .name {
+    font-size: clamp(2.4rem, 9vw, 3.4rem);
+    font-weight: 800;
+    background: linear-gradient(90deg, #d6336c, #f06595, #cc5de8, #d6336c);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s linear infinite;
+    margin-bottom: 22px;
+    line-height: 1.2;
+  }
+
+  @keyframes shine {
+    to { background-position: 300% center; }
+  }
+
+  .divider {
+    width: 90px;
+    height: 3px;
+    margin: 0 auto 22px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, transparent, #d6336c, transparent);
+  }
+
+  p.wish {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: #5a3a52;
+    margin-bottom: 16px;
+  }
+
+  .emoji-row {
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    margin: 26px 0 20px;
+  }
+
+  .signature {
+    font-style: italic;
+    font-size: 1rem;
+    color: #a8527f;
+    margin-top: 10px;
+  }
+
+  .btn {
+    margin-top: 28px;
+    display: inline-block;
+    padding: 14px 34px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f06595, #cc5de8);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(204, 93, 232, 0.45);
+    transition: transform 0.25s, box-shadow 0.25s;
+    font-family: inherit;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 16px 30px rgba(204, 93, 232, 0.6);
+  }
+
+  .btn:active { transform: scale(0.97); }
+
+  /* Конфетти при клике */
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 999;
+    pointer-events: none;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 38px 22px; border-radius: 22px; }
+    p.wish { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="cake">🎂</div>
+  <h1>С Днём Рождения,</h1>
+  <div class="name">Дарья!</div>
+  <div class="divider"></div>
+
+  <p class="wish">
+    Милая Даша, желаю тебе море счастья, солнечных дней и исполнения самых
+    заветных желаний. Пусть каждый день приносит радость, а рядом всегда
+    будут люди, которые тебя любят и ценят. 💖
+  </p>
+
+  <p class="wish">
+    Ты невероятная — оставайся такой же искренней, красивой и вдохновляющей.
+    Пусть удача идёт с тобой рука об руку! ✨
+  </p>
+
+  <div class="emoji-row">🌸 🎈 🥂 🎁 💐</div>
+
+  <div class="signature">С любовью и лучшими пожеланиями 💕</div>
+
+  <button class="btn" onclick="celebrate()">Нажми меня 🎉</button>
+</div>
+
+<script>
+  // Плавающие эмодзи на фоне
+  const icons = ['💖', '✨', '🌸', '💫', '🎈', '💝', '⭐', '🌷'];
+  function spawnFloating() {
+    const el = document.createElement('div');
+    el.className = 'floating';
+    el.textContent = icons[Math.floor(Math.random() * icons.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+    const dur = 7 + Math.random() * 8;
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay = Math.random() * 2 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), (dur + 3) * 1000);
+  }
+  setInterval(spawnFloating, 450);
+  for (let i = 0; i < 8; i++) setTimeout(spawnFloating, i * 300);
+
+  // Конфетти
+  const colors = ['#f06595', '#cc5de8', '#ffd43b', '#69db7c', '#4dabf7', '#ff922b'];
+  function celebrate() {
+    for (let i = 0; i < 120; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.top = '-20px';
+      c.style.width = c.style.height = (6 + Math.random() * 10) + 'px';
+      if (Math.random() > 0.5) c.style.borderRadius = '50%';
+      document.body.appendChild(c);
+
+      const xDrift = (Math.random() - 0.5) * 400;
+      const duration = 2000 + Math.random() * 2500;
+
+      c.animate([
+        { transform: 'translate(0, 0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${xDrift}px, 105vh) rotate(${720 + Math.random() * 720}deg)`, opacity: 0 }
+      ], { duration: duration, easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)' });
+
+      setTimeout(() => c.remove(), duration);
+    }
+  }
+</script>
+</body>
+</html>
